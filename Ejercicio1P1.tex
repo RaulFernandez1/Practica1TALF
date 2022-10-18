@@ -1,0 +1,51 @@
+\documentclass{article}
+% pre\'ambulo
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsthm, amsmath}
+\usepackage{nccmath}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\newtheorem{example}{Paso}
+
+\title{Teoría de Autómatas y Lenguajes Formales\\[.4\baselineskip]Práctica 1: Latex y expresiones regurales}
+\author{Raul, Fernandez Escaño}
+\date{11 de octubre de 2022}
+
+\begin{document}
+% cuerpo del documento
+
+\maketitle
+
+\section{Potencia de un conjunto}
+Encuentra la potencia cúbica del conjunto $R=\{(1,1),(1,2),(2,3)
+,(3,4)\}$. En todo momento, se tendrá en cuenta esta fórmula:
+\begin{equation*}
+ R^n = 
+ \begin{cases}
+ 	R & n = 1 \\
+ 	\{(a,b)\colon \exists c \in A, (a,c)\in R^{n-1} \land
+ 	(c,b) \in R \} & n > 1
+ \end{cases}
+\end{equation*}
+ \begin{example}
+ Dado que buscamos la potencia cúbica, antes debemos calcular la potencia cuadrada. Sustituyendo nuestro valor por la n nos sale que:
+  \begin{equation*}
+ 	R^2 = \{(a,b)\colon \exists c \in A, (a,c)\in R \land 
+ 	(c,b)\in R \} = \{(1,1),(1,2),(1,3),(2,4)\}
+  \end{equation*}
+ Como podemos observar, $(1,1)\in R$ se puede relacionar consigo mismo ya que $\exists c \in A$, siendo este el 1 y dando a lugar al par $(1,1)$ que pertenece a $R^2$. Así se haría con el resto de elementos de R.
+ \end{example}
+ \begin{example}
+ Al calcular $R^2$, podemos realizar el mismo cálculo para obtener $R^3$, que será en este caso la solución para nuestro problema.
+  \begin{equation*}
+ 	R^3 = \{(a,b)\colon \exists c\in A, (a,c)\in R^2 \land
+ 	(c,b) \in R\} = \{(1,1),(1,2),(1,3),(1,4)\}
+  \end{equation*}
+  En este caso, las relaciones se establecen entre $R^2$ y $R$.
+  Un ejemplo para la obtención de algun par es el caso de 
+  $(1,4)$, que se obtiene a partir de $(1,3)\in R^2$ y de
+  $(3,4)\in R$ siendo $c = 3$
+ \end{example}
+\end{document}
