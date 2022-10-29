@@ -1,0 +1,60 @@
+\documentclass{article}
+% pre\'ambulo
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsthm, amsmath}
+\usepackage{nccmath}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{subcaption}
+\graphicspath{ {/home/alumno/Descargas/Practica2} }
+\newtheorem{example}{Paso}
+\newtheorem{definicion}{Definición}[section]
+
+\title{Teoría de Autómatas y Lenguajes Formales\\[.4\baselineskip]Práctica 2: Automatas Finitos}
+\author{Raul, Fernandez Escaño}
+\date{\today}
+
+\begin{document}
+% cuerpo del documento
+
+\maketitle
+
+\section{Automata DFA}
+Se considera un lenguaje L sobre un alfabeto $\Sigma=\{a,b\}$ que contiene a la cadena a. Construye un automata DFA que reconozca el lenguaje L, rechazando todas aquellas que no sean válidas
+\begin{definicion}(\textbf{Automata DFA}): Un automata finito determinista es una 5-tupla de (K,$\Sigma$,$\delta$,s,F) que cumple:
+\end{definicion}
+	\begin{enumerate}[label=]
+		\item K es un conjunto no vacío
+		\item $\Sigma$ es un alfabeto
+		\item $s\in K$ es el estado inicial
+		\item $F \subseteq K$ es un conjunto de estados finales
+		\item $\delta \colon K \times \Sigma \rightarrow K$ es la funcion
+		de transición
+	\end{enumerate}
+ \begin{example}(\textbf{Caracteristicas del automata}) \end{example}
+ El automata que se ha definido posee las siguientes caracteristicas:
+  \begin{enumerate}
+  	\item K = $\{q0,q1,q2\}$
+  	\item $\Sigma = \{a,b\}$
+  	\item s = q0
+  	\item F =$ \{q1\}$
+  	\item $\delta = \{(q0,a,q1),(q0,b,q2),(q1,a,q2),(q1,b,q2)
+  	,(q2,a,q2),(q2,b,q2)\}$
+  \end{enumerate}
+  \begin{example}(\textbf{Representacion del automata}) \end{example}Una vez definido las caracteristica de nuestro automata, se recreara    utilizando la herramienta JFLAP, que gracias a su interfaz, se podra 	   apreciar el automata mucho mejor, dando por consiguiente la representacion adjuntada [Figura 1]
+\begin{example}(\textbf{Automata en Oracle}) \end{example}Tambien se podrá representar utilizando codificación de Oracle [Figura 2]
+
+
+\begin{figure}
+ 	\includegraphics[scale=0.4]{DFA_Image}
+ 	\caption{}
+\end{figure}
+\begin{figure}
+	\includegraphics{DFA_Code}
+	\caption{}
+\end{figure}
+
+\end{document}
