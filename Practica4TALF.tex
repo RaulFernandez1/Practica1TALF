@@ -1,0 +1,63 @@
+\documentclass{article}
+% pre\'ambulo
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsthm, amsmath}
+\usepackage{nccmath}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{whilecode2}
+
+\graphicspath{ {/home/alumno/Descargas/Practica4} }
+\newtheorem{example}{Paso}
+\newtheorem{definicion}{Definición}[section]
+
+\title{Teoría de Autómatas y Lenguajes Formales\\[.4\baselineskip]Práctica 4: EXWHILE y Codificación de Programas}
+\author{Raul, Fernandez Escaño}
+\date{\today}
+
+\begin{document}
+% cuerpo del documento
+
+\maketitle
+
+\section{Programas WHILE}
+\begin{flushleft}Para obtener el programa, he ido probando y buscando cual es la configuración adecuada para que este diverja. A continuación, se les mostrará cual es:\end{flushleft}
+
+\whileprogram{Q}{0} {
+	\DefaultVar{2}\Assig\DefaultVar{1} + 1; \\
+	\While{$X_2 \not = 0$} {
+		\DefaultVar{1}\Assig 0 \\
+	} 
+}{s}
+
+\section{Vectores usando Octave}
+
+\begin{flushleft}En este caso, se creará un script en Octave que permita decodificar dada una entrada N todos los vectores cuya codificación sea N o inferior. El script será el siguiente: \end{flushleft}
+function allVectorsN(N) \\
+  for i=0:N-1 \\
+    disp(['(' num2str(godeldecoding(i)) ')']) \\
+  end \\
+end
+
+\begin{flushleft}Dado este código, a continuación se han probado las siguientes entradas:\end{flushleft}
+
+\includegraphics[scale=0.30]{todosVectores}
+
+\section{WHILE usando Octave}
+
+\begin{flushleft}En este caso, se creará un script en Octave que permita decodificar dada una entrada N todos los programas WHILE cuya codificación sea N o inferior. El script será el siguiente: \end{flushleft}
+function allWhileProgramsN(N) \\
+  for i=0:N-1 \\
+    disp(N2WHILE(i)) \\
+  end \\
+end
+
+\begin{flushleft}Dado este código, a continuación se han probado las siguientes entradas:\end{flushleft}
+
+\includegraphics[scale=0.30]{todosProgramasWhile}
+
+\end{document}
