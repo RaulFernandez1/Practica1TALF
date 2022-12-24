@@ -1,0 +1,96 @@
+\documentclass{article}
+% pre\'ambulo
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsthm, amsmath}
+\usepackage{nccmath}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{whilecode2}
+\graphicspath{ {/home/alumno/Descargas/Practica3} }
+\newtheorem{example}{Paso}
+\newtheorem{definicion}{Definición}[section]
+
+\title{Teoría de Autómatas y Lenguajes Formales\\[.4\baselineskip]Práctica 3: Máquina de Turing, funciones recursivas y lenguaje WHILE}
+\author{Raul, Fernandez Escaño}
+\date{\today}
+
+\begin{document}
+% cuerpo del documento
+
+\maketitle
+
+\section{Maquina de Turing (JFLAP)}
+Se realizara en JFLAP una Maquina de Turing que sea capaz de sumar 2 números cualesquiera. Sin embargo, habrá que tener en cuenta una serie de consideraciones:
+\begin{enumerate}
+	\item La máquina en JFLAP empieza en una posicion anterior a la cadena, por lo que debemos posicionarla justo despues de la cadena
+	\item Se pueden realizar sustitucion de simbolos y desplazamientos a la vez. Sin embargo, según lo visto en la teoría, estas instrucciones quedan prohibidas. Solo se podra realizar una de ellas a la vez
+\end{enumerate}
+Tras esta consideración, la máquina resultante quedará tal que así:
+
+-Insertar foto del automata-
+\begin{figure}
+	\includegraphics[scale=0.34]{MTAdd}
+\end{figure}
+
+\begin{definicion}(\textbf{Automata DFA}): Un automata finito determinista es una 5-tupla de (K,$\Sigma$,$\delta$,s,F) que cumple:
+\end{definicion}
+	\begin{enumerate}[label=]
+		\item K es un conjunto no vacío
+		\item $\Sigma$ es un alfabeto
+		\item $s\in K$ es el estado inicial
+		\item $F \subseteq K$ es un conjunto de estados finales
+		\item $\delta \colon K \times \Sigma \rightarrow K$ es la funcion
+		de transición
+	\end{enumerate}
+\section{Funciones recursivas (Octave)}
+Se define en un documento de texto la función que queremos realizar, en este caso la suma de 3 números, siendo este documeto un fichero que es leido por ''recursiveexpresion.m'' y por ''evalrecfunction.m''.
+\\ 
+\\
+El primero nos desarrolla nuestra función recursiva, mostrando en pantalla cada una de las funciones recursivas fundamentales, mientras que el segundo en base a una función recursiva y una serie de valores de entrada, la evalua hasta obtener el resultado.
+\\
+\\
+La función que nos piden en el ejercicio sería la siguiente:
+\begin{equation*}
+<\pi^1_1|\sigma(\pi^3_3)>(\pi^3_1,<\pi^1_1|\sigma(\pi^3_3)>(\pi^3_2,\pi^3_3))
+\end{equation*}
+La funcion recursiva descrita se descompone en una serie de pasos, pudiendo destacar:
+
+\begin{example}
+Dentro del parentesis se encuentra los elementos que se van a escoger para el calculo de nuestra solucion. En él, se encuentra $\pi^3_1$ que hace referencia al primer elemento que se obtiene, mientras que el resto del parentesis es la obtencion de ese segundo elemento recurriendo al mismo procedimiento. Por tanto, será suficiente con definirlo una vez.
+\end{example}
+
+\begin{example}
+Una vez se obtienen las variables del paréntesis, se puede realizar el cálculo. Nos encontramos con una función iterativa primitiva que se encargara de realizar una serie de veces, determinado por el segundo elemento del paréntesis, la función hasta llegar al caso base, siendo esta una función g. Tras su evaluación, se realizará el procedimiento inverso, pero en este caso evaluando la función h en cada iteración. En el último paso, se devolverá un único elemento, que será el resultado.
+\end{example}
+\begin{flushleft}Un ejemplo puede ser la siguiente imagen:\end{flushleft}
+
+
+
+\includegraphics[scale=0.30]{ADD3FuncionRecursiva}
+
+
+
+\section{Lenguaje WHILE}
+
+\begin{flushleft}
+En este ejercicio nos piden realizar un código WHILE que sea capaz de representar la suma de 3 números. Un posible código sería el siguiente:
+\end{flushleft}
+
+\whileprogram{Q}{3} {
+	\While{$X_3 \not = 0$} {
+		\DefaultVar{2}\Assig\DefaultVar{2} + 1 \\
+		\DefaultVar{3}\Assig\DefaultVar{3} - 1
+	} 
+	\While{$X_1 \not = 0$} {
+		\DefaultVar{2}\Assig\DefaultVar{2} + 1 \\
+		\DefaultVar{1}\Assig\DefaultVar{1} - 1
+	}
+	\DefaultVar{1}\Assig\DefaultVar{2}
+}{s}
+
+
+\end{document}
